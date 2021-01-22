@@ -35,6 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.bun.miitmdid.core.MdidSdkHelper;
 import com.tencent.tinker.lib.library.TinkerLoadLibrary;
 import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG, "i am on onCreate classloader:" + MainActivity.class.getClassLoader().toString());
         //test resource change
         Log.e(TAG, "i am on onCreate string:" + getResources().getString(R.string.test_resource));
-//        Log.e(TAG, "i am on patch onCreate");
+        Log.e(TAG, "------i am on patch onCreate");
 
         mTvMessage = findViewById(R.id.tv_message);
 
@@ -116,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showInfo(MainActivity.this);
+
+                testUms();
             }
         });
     }
@@ -203,5 +206,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Utils.setBackground(true);
+    }
+
+    private void testUms() {
+        Log.w("tinker.testUms", "getApplication:" + getApplication());
+        MdidSdkHelper.InitSdk(getApplication(), true, null);
     }
 }
