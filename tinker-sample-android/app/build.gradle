@@ -31,9 +31,7 @@ dependencies {
 //    compile "org.scala-lang:scala-library:2.11.7"
     }
 
-    compile (group:'com.autohome.ums', name:'autohome-ums', version:'1.0.3', changing: true) {
-//        exclude group: 'com.bun.miitmdid', module: 'miitmdid'
-    }
+    implementation files('libs/oaid_sdk_1.0.23.aar')
 }
 
 def gitSha() {
@@ -157,11 +155,11 @@ ext {
 
     //for normal build
     //old apk file to build patch apk
-    tinkerOldApkPath = "${bakPath}/app-debug-0122-15-57-11.apk"
+    tinkerOldApkPath = "${bakPath}/app-debug-0122-16-49-28.apk"
     //proguard mapping file to build patch apk
     tinkerApplyMappingPath = "${bakPath}/app-debug-1018-17-32-47-mapping.txt"
     //resource R.txt to build patch apk, must input if there is resource changed
-    tinkerApplyResourcePath = "${bakPath}/app-debug-0122-15-57-11-R.txt"
+    tinkerApplyResourcePath = "${bakPath}/app-debug-0122-16-49-28-R.txt"
 
     //only use for build all flavor, if not, just ignore this field
     tinkerBuildFlavorDirectory = "${bakPath}/app-1018-17-32-47"

@@ -36,6 +36,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.bun.miitmdid.core.MdidSdkHelper;
+import com.bun.miitmdid.interfaces.IIdentifierListener;
+import com.bun.miitmdid.interfaces.IdSupplier;
 import com.tencent.tinker.lib.library.TinkerLoadLibrary;
 import com.tencent.tinker.lib.tinker.Tinker;
 import com.tencent.tinker.lib.tinker.TinkerInstaller;
@@ -209,7 +211,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void testUms() {
-        Log.w("tinker.testUms", "getApplication:" + getApplication());
-        MdidSdkHelper.InitSdk(getApplication(), true, null);
+        Log.w("tinker.testMdidSdk", "getApplication:" + getApplication());
+        MdidSdkHelper.InitSdk(getApplication(), true, new IIdentifierListener() {
+            @Override
+            public void OnSupport(boolean b, IdSupplier idSupplier) {
+
+            }
+        });
     }
 }
